@@ -31,9 +31,17 @@ document.querySelector("form").addEventListener("submit", e => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     })
-    .then(res => res.text())
+   /* .then(res => res.text())
     .then(msg => alert(msg))
-    .catch(err => console.error(err));
+    .catch(err => console.error(err));*/
+    .then(res => res.json())
+.then(data => {
+    if (data.success) {
+        alert("Saved successfully!");
+    } else {
+        alert("Save failed");
+    }
+  });
 });
 </script>
 </body>
