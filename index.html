@@ -26,7 +26,7 @@ document.querySelector("form").addEventListener("submit", e => {
         roll: document.querySelector("[name='roll']").value
     };
 
-    fetch("https://YOUR-BACKEND-URL/add-student", {
+    fetch("https://backend2.railway.internal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
