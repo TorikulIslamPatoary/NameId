@@ -11,38 +11,44 @@
 
 <section class="form-box">
     <h2>Add Student</h2>
-    <form>
-        <input type="text" placeholder="Student Name" required>
-        <input type="number" placeholder="ID">
+
+    <form id="studentForm">
+        <input type="text" id="username" placeholder="Student Name" required>
+        <input type="number" id="roll" placeholder="ID" required>
         <button type="submit">Save</button>
     </form>
 </section>
+
 <script>
-document.querySelector("form").addEventListener("submit", e => {
+document.getElementById("studentForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const data = {
-        username: document.querySelector("[name='username']").value,
-        roll: document.querySelector("[name='roll']").value
+        username: document.getElementById("username").value,
+        roll: document.getElementById("roll").value
     };
 
-    fetch("https://backend2-production-7196.up.railway.app", {
+    console.log("Sending data:", data); // 🔥 debug
+
+    fetch("https://backend2-production-7196.up.railway.app/add-student", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(data)
     })
-     then(res => res.text())
-    .then(msg => alert(msg))
-    .catch(err => console.error(err));
     .then(res => res.json())
-.then(data => {
-    if (data.success) {
-        alert("Saved successfully!");
-    } else {
-        alert("Save failed");
-    }
-  });
+    .then(data => {
+        console.log("Response:", data);
+        if (data.success) {
+            alert("✅ Saved successfully!");
+        } else {
+            alert("❌ Save failed");
+        }
+    })
+    .catch(err => console.error("Fetch error:", err));
 });
 </script>
+
 </body>
 </html>
