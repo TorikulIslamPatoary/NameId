@@ -32,7 +32,7 @@ document.getElementById("studentForm").addEventListener("submit", function (e) {
 
     console.log("Sending:", data);
 
-    fetch("https://backend2-production-7196.up.railway.app/add-student", {
+    fetch("https://backend2-production-7196.up.railway.app", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
