@@ -20,34 +20,15 @@
 </section>
 
 <script>
+<script>
+alert("JS LOADED");
+
 document.getElementById("studentForm").addEventListener("submit", function (e) {
     e.preventDefault();
-
-    const data = {
-        username: document.getElementById("username").value,
-        roll: document.getElementById("roll").value
-    };
-
-    console.log("Sending data:", data); // 🔥 debug
-
-    fetch("https://backend2-production-7196.up.railway.app/add-student", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log("Response:", data);
-        if (data.success) {
-            alert("✅ Saved successfully!");
-        } else {
-            alert("❌ Save failed");
-        }
-    })
-    .catch(err => console.error("Fetch error:", err));
+    alert("FORM SUBMITTED");
 });
+</script>
+
 </script>
 
 </body>
